@@ -8,371 +8,380 @@
 <title>Booking Inquiry - Gili Sal:EE</title>
 
 <style>
-:root {
-  --primary: #4A9B9F;
-  --primary-dark: #3A7B7F;
-  --accent: #5FB5BA;
-  --sand: #F5EFE7;
-  --cream: #FAF8F4;
-  --text-dark: #2C3E50;
-  --text-light: #546E7A;
-}
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: 'Segoe UI', 'Apple SD Gothic Neo', sans-serif;
-  background: var(--cream);
-  color: var(--text-dark);
-}
-
-/* Navigation */
-.nav {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
-  z-index: 1000;
-  padding: 16px 0;
-  box-shadow: 0 2px 20px rgba(74, 155, 159, 0.08);
-}
-
-.nav-content {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 24px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  text-decoration: none;
-}
-
-.logo-img {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 2px solid var(--primary);
-}
-
-.logo-text {
-  font-size: 22px;
-  font-weight: 600;
-  color: var(--primary);
-  letter-spacing: 0.5px;
-}
-
-.logo-sub {
-  font-size: 11px;
-  color: var(--text-light);
-  font-weight: 400;
-  letter-spacing: 1px;
-}
-
-/* Language Toggle */
-.lang-toggle {
-  display: flex;
-  gap: 8px;
-  background: var(--sand);
-  padding: 8px;
-  border-radius: 50px;
-}
-
-.lang-btn {
-  padding: 8px 16px;
-  border: none;
-  background: transparent;
-  color: var(--text-light);
-  font-size: 14px;
-  font-weight: 600;
-  border-radius: 50px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.lang-btn.active {
-  background: var(--primary);
-  color: white;
-}
-
-/* Header */
-.header {
-  position: relative;
-  height: 350px;
-  margin-top: 77px;
-  background-image: url('asset/img/reserve/reserve1.JPG');
-  background-size: cover;
-  background-position: center;
-  border-bottom-left-radius: 30px;
-  border-bottom-right-radius: 30px;
-  overflow: hidden;
-}
-
-.header::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(74, 155, 159, 0.4));
-  border-bottom-left-radius: 30px;
-  border-bottom-right-radius: 30px;
-}
-
-.header-content {
-  position: absolute;
-  bottom: 50px;
-  left: 50%;
-  transform: translateX(-50%);
-  text-align: center;
-  width: 90%;
-}
-
-.header-logo {
-  width: 150px;
-  height: auto;
-  margin: 0 auto 20px;
-  filter: brightness(0) invert(1);
-}
-
-.header-content h1 {
-  margin: 0;
-  font-size: 36px;
-  font-weight: 700;
-  color: white;
-  text-shadow: 0 2px 10px rgba(0,0,0,0.3);
-  margin-bottom: 8px;
-}
-
-.header-content p {
-  color: rgba(255, 255, 255, 0.95);
-  font-size: 16px;
-  text-shadow: 0 2px 8px rgba(0,0,0,0.3);
-}
-
-/* Container */
-.container {
-  padding: 50px 24px;
-  max-width: 600px;
-  margin: auto;
-}
-
-/* Card */
-.card {
-  background: white;
-  padding: 40px 30px;
-  border-radius: 24px;
-  box-shadow: 0 10px 40px rgba(74, 155, 159, 0.1);
-  margin-bottom: 30px;
-}
-
-.card-title {
-  font-size: 24px;
-  color: var(--primary);
-  margin-bottom: 24px;
-  font-weight: 600;
-  text-align: center;
-}
-
-/* Input Group */
-.input-group {
-  margin-bottom: 24px;
-  display: flex;
-  flex-direction: column;
-}
-
-label {
-  font-size: 14px;
-  color: var(--text-dark);
-  margin-bottom: 8px;
-  font-weight: 500;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.label-icon {
-  font-size: 16px;
-}
-
-input, textarea {
-  padding: 16px;
-  font-size: 16px;
-  border-radius: 14px;
-  border: 2px solid #E8E8E8;
-  background: var(--sand);
-  transition: all 0.3s ease;
-  font-family: inherit;
-}
-
-input:focus, textarea:focus {
-  background: white;
-  border-color: var(--primary);
-  outline: none;
-  box-shadow: 0 0 0 4px rgba(74, 155, 159, 0.1);
-}
-
-textarea {
-  resize: vertical;
-  min-height: 120px;
-}
-
-input::placeholder, textarea::placeholder {
-  color: #999;
-}
-
-/* Date inputs side by side */
-.date-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-}
-
-/* Button */
-button {
-  width: 100%;
-  padding: 18px;
-  background: var(--primary);
-  color: white;
-  border: none;
-  border-radius: 50px;
-  font-size: 18px;
-  font-weight: 600;
-  margin-top: 10px;
-  transition: all 0.3s ease;
-  cursor: pointer;
-  box-shadow: 0 4px 20px rgba(74, 155, 159, 0.3);
-}
-
-button:hover {
-  background: var(--primary-dark);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 25px rgba(74, 155, 159, 0.4);
-}
-
-button:active {
-  transform: translateY(0);
-}
-
-button:disabled {
-  background: #ccc;
-  cursor: not-allowed;
-  transform: none;
-}
-
-/* Back Link */
-.back-home {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  margin-top: 30px;
-  color: var(--primary);
-  font-size: 16px;
-  text-decoration: none;
-  font-weight: 600;
-  padding: 12px 24px;
-  border: 2px solid var(--primary);
-  border-radius: 50px;
-  transition: all 0.3s ease;
-  background: white;
-}
-
-.back-home:hover {
-  background: var(--primary);
-  color: white;
-}
-
-/* Toast */
-#toast {
-  visibility: hidden;
-  min-width: 280px;
-  background: var(--primary);
-  color: white;
-  text-align: center;
-  border-radius: 50px;
-  padding: 16px 24px;
-  position: fixed;
-  z-index: 999;
-  left: 50%;
-  bottom: 40px;
-  transform: translateX(-50%);
-  font-size: 15px;
-  opacity: 0;
-  transition: all 0.3s ease;
-  box-shadow: 0 6px 25px rgba(74, 155, 159, 0.4);
-}
-
-#toast.show {
-  visibility: visible;
-  opacity: 1;
-  bottom: 50px;
-}
-
-/* Info Box */
-.info-box {
-  background: var(--sand);
-  padding: 20px;
-  border-radius: 16px;
-  margin-bottom: 30px;
-  border-left: 4px solid var(--primary);
-}
-
-.info-box h3 {
-  color: var(--primary);
-  font-size: 16px;
-  margin-bottom: 10px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.info-box p {
-  color: var(--text-light);
-  font-size: 14px;
-  line-height: 1.6;
-  margin: 0;
-}
-
-/* Mobile Responsive */
-@media (max-width: 768px) {
-  .header {
-    height: 280px;
+  :root {
+    --primary: #4A9B9F;
+    --primary-dark: #3A7B7F;
+    --accent: #5FB5BA;
+    --sand: #F5EFE7;
+    --cream: #FAF8F4;
+    --text-dark: #2C3E50;
+    --text-light: #546E7A;
+  }
+  
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Segoe UI', 'Apple SD Gothic Neo', sans-serif;
+    background: var(--cream);
+    color: var(--text-dark);
+  }
+  
+  /* Navigation */
+  .nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    padding: 16px 0;
+    box-shadow: 0 2px 20px rgba(74, 155, 159, 0.08);
+  }
+  
+  .nav-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
   }
   
   .logo-img {
     width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--primary);
   }
   
-  .hero-logo {
-    width: 140px;
+  .logo-text {
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--primary);
+    letter-spacing: 0.5px;
+  }
+  
+  .logo-sub {
+    font-size: 11px;
+    color: var(--text-light);
+    font-weight: 400;
+    letter-spacing: 1px;
+  }
+  
+  /* Language Toggle */
+  .lang-toggle {
+    display: flex;
+    gap: 8px;
+    background: var(--sand);
+    padding: 8px;
+    border-radius: 50px;
+  }
+  
+  .lang-btn {
+    padding: 8px 16px;
+    border: none;
+    background: transparent;
+    color: var(--text-light);
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .lang-btn.active {
+    background: var(--primary);
+    color: white;
+  }
+  
+  /* Header */
+  .header {
+    position: relative;
+    height: 350px;
+    margin-top: 77px;
+    background-image: url('asset/img/reserve/reserve1.JPG');
+    background-size: cover;
+    background-position: center;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    overflow: hidden;
+  }
+  
+  .header::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(74, 155, 159, 0.4));
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+  }
+  
+  .header-content {
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    width: 90%;
+  }
+  
+  .header-logo {
+    width: 150px;
+    height: auto;
+    margin: 0 auto 20px;
+    filter: brightness(0) invert(1);
   }
   
   .header-content h1 {
-    font-size: 28px;
+    margin: 0;
+    font-size: 36px;
+    font-weight: 700;
+    color: white;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    margin-bottom: 8px;
   }
   
+  .header-content p {
+    color: rgba(255, 255, 255, 0.95);
+    font-size: 16px;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  }
+  
+  /* Container */
   .container {
-    padding: 30px 20px;
+    padding: 50px 24px;
+    max-width: 600px;
+    margin: auto;
   }
   
+  /* Card */
   .card {
-    padding: 30px 24px;
+    background: white;
+    padding: 40px 30px;
+    border-radius: 24px;
+    box-shadow: 0 10px 40px rgba(74, 155, 159, 0.1);
+    margin-bottom: 30px;
   }
   
-  .date-row {
-    grid-template-columns: 1fr;
+  .card-title {
+    font-size: 24px;
+    color: var(--primary);
+    margin-bottom: 24px;
+    font-weight: 600;
+    text-align: center;
   }
-}
+  
+  /* Input Group */
+  .input-group {
+    margin-bottom: 24px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  label {
+    font-size: 14px;
+    color: var(--text-dark);
+    margin-bottom: 8px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  
+  .label-icon {
+    font-size: 16px;
+  }
+  
+  input, textarea, select {
+    padding: 16px;
+    font-size: 16px;
+    border-radius: 14px;
+    border: 2px solid #E8E8E8;
+    background: var(--sand);
+    transition: all 0.3s ease;
+    font-family: inherit;
+  }
+  
+  input:focus, textarea:focus, select:focus {
+    background: white;
+    border-color: var(--primary);
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(74, 155, 159, 0.1);
+  }
+  
+  select {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23546E7A' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    padding-right: 40px;
+  }
+  
+  textarea {
+    resize: vertical;
+    min-height: 120px;
+  }
+  
+  input::placeholder, textarea::placeholder {
+    color: #999;
+  }
+  
+  /* Date inputs side by side */
+  .date-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  
+  /* Button */
+  button {
+    width: 100%;
+    padding: 18px;
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-size: 18px;
+    font-weight: 600;
+    margin-top: 10px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    box-shadow: 0 4px 20px rgba(74, 155, 159, 0.3);
+  }
+  
+  button:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 25px rgba(74, 155, 159, 0.4);
+  }
+  
+  button:active {
+    transform: translateY(0);
+  }
+  
+  button:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+    transform: none;
+  }
+  
+  /* Back Link */
+  .back-home {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 30px;
+    color: var(--primary);
+    font-size: 16px;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 12px 24px;
+    border: 2px solid var(--primary);
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    background: white;
+  }
+  
+  .back-home:hover {
+    background: var(--primary);
+    color: white;
+  }
+  
+  /* Toast */
+  #toast {
+    visibility: hidden;
+    min-width: 280px;
+    background: var(--primary);
+    color: white;
+    text-align: center;
+    border-radius: 50px;
+    padding: 16px 24px;
+    position: fixed;
+    z-index: 999;
+    left: 50%;
+    bottom: 40px;
+    transform: translateX(-50%);
+    font-size: 15px;
+    opacity: 0;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 25px rgba(74, 155, 159, 0.4);
+  }
+  
+  #toast.show {
+    visibility: visible;
+    opacity: 1;
+    bottom: 50px;
+  }
+  
+  /* Info Box */
+  .info-box {
+    background: var(--sand);
+    padding: 20px;
+    border-radius: 16px;
+    margin-bottom: 30px;
+    border-left: 4px solid var(--primary);
+  }
+  
+  .info-box h3 {
+    color: var(--primary);
+    font-size: 16px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .info-box p {
+    color: var(--text-light);
+    font-size: 14px;
+    line-height: 1.6;
+    margin: 0;
+  }
+  
+  /* Mobile Responsive */
+  @media (max-width: 768px) {
+    .header {
+      height: 280px;
+    }
+    
+    .logo-img {
+      width: 50px;
+    }
+    
+    .hero-logo {
+      width: 140px;
+    }
+    
+    .header-content h1 {
+      font-size: 28px;
+    }
+    
+    .container {
+      padding: 30px 20px;
+    }
+    
+    .card {
+      padding: 30px 24px;
+    }
+    
+    .date-row {
+      grid-template-columns: 1fr;
+    }
+  }
 </style>
 </head>
 
@@ -437,7 +446,7 @@ button:disabled {
           <span class="label-icon">✉️</span>
           <span data-en="Email" data-ko="이메일">Email</span>
         </label>
-        <input type="email" name="email" data-placeholder-en="example@email.com (optional)" data-placeholder-ko="example@email.com (선택)" placeholder="example@email.com (optional)" />
+        <input type="email" name="email" data-placeholder-en="example@email.com" data-placeholder-ko="example@email.com" placeholder="example@email.com" />
       </div>
 
       <div class="date-row">
@@ -469,6 +478,38 @@ button:disabled {
       <div class="input-group">
         <label>
           <span class="label-icon">💬</span>
+          <span data-en="Social Media (Optional)" data-ko="소셜 미디어 (선택)">Social Media (Optional)</span>
+        </label>
+        <select name="socialType" id="socialType" data-option-default-en="Select Platform" data-option-default-ko="플랫폼 선택" data-option-kakao-en="KakaoTalk" data-option-kakao-ko="카카오톡" data-option-instagram-en="Instagram" data-option-instagram-ko="인스타그램" data-option-facebook-en="Facebook" data-option-facebook-ko="페이스북" data-option-whatsapp-en="WhatsApp" data-option-whatsapp-ko="왓츠앱" data-option-tiktok-en="TikTok" data-option-tiktok-ko="틱톡" data-option-other-en="Other" data-option-other-ko="기타">
+          <option value="">Select Platform</option>
+          <option value="Facebook">Facebook</option>
+          <option value="Instagram">Instagram</option>
+          <option value="WhatsApp">WhatsApp</option>
+          <option value="TikTok">TikTok</option>
+          <option value="KakaoTalk">KakaoTalk</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+
+      <div class="input-group" id="otherSocialGroup" style="display: none;">
+        <label>
+          <span class="label-icon">📝</span>
+          <span data-en="Platform Name" data-ko="플랫폼 이름">Platform Name</span>
+        </label>
+        <input type="text" name="otherSocial" id="otherSocial" data-placeholder-en="Please specify the platform" data-placeholder-ko="플랫폼을 입력해주세요" placeholder="Please specify the platform" />
+      </div>
+
+      <div class="input-group">
+        <label>
+          <span class="label-icon">🆔</span>
+          <span data-en="Social Media ID (Optional)" data-ko="소셜 미디어 ID (선택)">Social Media ID (Optional)</span>
+        </label>
+        <input type="text" name="socialId" data-placeholder-en="Enter your ID" data-placeholder-ko="아이디를 입력해주세요" placeholder="Enter your ID" />
+      </div>
+
+      <div class="input-group">
+        <label>
+          <span class="label-icon">💬</span>
           <span data-en="Special Requests (Optional)" data-ko="요청사항 (선택)">Special Requests (Optional)</span>
         </label>
         <textarea name="message" data-placeholder-en="Please feel free to write any special requests or requirements" data-placeholder-ko="특이사항이나 요청사항이 있으시면 자유롭게 작성해주세요" placeholder="Please feel free to write any special requests or requirements"></textarea>
@@ -488,7 +529,7 @@ button:disabled {
 
 <script>
 // Google Apps Script Webhook URL (실제 사용 시 변경 필요)
-const scriptURL = "https://script.google.com/macros/s/AKfycbwH05LjFwgsVxw9oi9PJ99wgLTvlvzruY-DqxMQ2vNKgGcxHjSCXgk0F1hy9S1jAgrR/exec";
+const scriptURL = "https://script.google.com/macros/s/AKfycbyWpDjxyJRMr_k0RCM4iyDjoMi8URhIfw_n8kp2C_InD4G0w6qgIyMxYdvPoyQPtkk4/exec";
 
 // Set minimum date to today
 const today = new Date().toISOString().split('T')[0];
@@ -510,6 +551,20 @@ function updatePlaceholders(lang) {
   });
 }
 
+function updateSelectOptions(lang) {
+  const select = document.querySelector('select[name="socialType"]');
+  if (select) {
+    const options = select.querySelectorAll('option');
+    options[0].textContent = select.dataset[`optionDefault${lang === 'en' ? 'En' : 'Ko'}`];
+    options[1].textContent = select.dataset[`optionFacebook${lang === 'en' ? 'En' : 'Ko'}`];
+    options[2].textContent = select.dataset[`optionInstagram${lang === 'en' ? 'En' : 'Ko'}`];
+    options[3].textContent = select.dataset[`optionWhatsapp${lang === 'en' ? 'En' : 'Ko'}`];
+    options[4].textContent = select.dataset[`optionTiktok${lang === 'en' ? 'En' : 'Ko'}`];
+    options[5].textContent = select.dataset[`optionKakao${lang === 'en' ? 'En' : 'Ko'}`];
+    options[6].textContent = select.dataset[`optionOther${lang === 'en' ? 'En' : 'Ko'}`];
+  }
+}
+
 document.querySelectorAll('.lang-btn').forEach(btn => {
   btn.addEventListener('click', () => {
     const lang = btn.dataset.lang;
@@ -529,6 +584,9 @@ document.querySelectorAll('.lang-btn').forEach(btn => {
     // Update placeholders
     updatePlaceholders(lang);
     
+    // Update select options
+    updateSelectOptions(lang);
+    
     // Save preference
     localStorage.setItem('lang', lang);
   });
@@ -539,6 +597,21 @@ const savedLang = localStorage.getItem('lang');
 if (savedLang && savedLang !== 'en') {
   document.querySelector(`[data-lang="${savedLang}"]`).click();
 }
+
+// Show/hide "Other" platform input
+document.getElementById('socialType').addEventListener('change', function(e) {
+  const otherGroup = document.getElementById('otherSocialGroup');
+  const otherInput = document.getElementById('otherSocial');
+  
+  if (e.target.value === 'Other') {
+    otherGroup.style.display = 'flex';
+    otherInput.required = true;
+  } else {
+    otherGroup.style.display = 'none';
+    otherInput.required = false;
+    otherInput.value = '';
+  }
+});
 
 function showToast(message, isSuccess = true) {
   const toast = document.getElementById("toast");
@@ -565,6 +638,8 @@ document.getElementById("bookingForm").addEventListener("submit", async (e) => {
     checkin: form.checkin.value,
     checkout: form.checkout.value,
     guests: form.guests.value,
+    socialType: form.socialType.value === 'Other' ? form.otherSocial.value : form.socialType.value || '-',
+    socialId: form.socialId.value || '-',
     message: form.message.value || '-',
     timestamp: new Date().toLocaleString('ko-KR')
   };
