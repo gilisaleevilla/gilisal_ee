@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+<title>Book Now - Gili Sal:EE</title>
+
+<style>
+:root {
+  --primary: #4A9B9F;
+  --primary-dark: #3A7B7F;
+  --accent: #5FB5BA;
+  --sand: #F5EFE7;
+  --cream: #FAF8F4;
+  --text-dark: #2C3E50;
+  --text-light: #546E7A;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', 'Apple SD Gothic Neo', sans-serif;
+  background: var(--cream);
+  color: var(--text-dark);
+}
+
+/* Navigation */
+.nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+  padding: 16px 0;
+  box-shadow: 0 2px 20px rgba(74, 155, 159, 0.08);
+}
+
+.nav-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+
+.logo-img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--primary);
+}
+
+.logo-text {
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--primary);
+  letter-spacing: 0.5px;
+}
+
+.logo-sub {
+  font-size: 11px;
+  color: var(--text-light);
+  font-weight: 400;
+  letter-spacing: 1px;
+}
+
+/* Language Toggle */
+.lang-toggle {
+  display: flex;
+  gap: 8px;
+  background: var(--sand);
+  padding: 8px;
+  border-radius: 50px;
+}
+
+.lang-btn {
+  padding: 8px 16px;
+  border: none;
+  background: transparent;
+  color: var(--text-light);
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.lang-btn.active {
+  background: var(--primary);
+  color: white;
+}
+
+/* Header */
+.header {
+  position: relative;
+  height: 350px;
+  margin-top: 77px;
+  background-image: url('https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=1600');
+  background-size: cover;
+  background-position: center;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+  overflow: hidden;
+}
+
+.header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(74, 155, 159, 0.4));
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+}
+
+.header-content {
+  position: absolute;
+  bottom: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  width: 90%;
+}
+
+.header-logo {
+  width: 150px;
+  height: auto;
+  margin: 0 auto 20px;
+  filter: brightness(0) invert(1);
+}
+
+.header-content h1 {
+  margin: 0;
+  font-size: 36px;
+  font-weight: 700;
+  color: white;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+  margin-bottom: 8px;
+}
+
+.header-content p {
+  color: rgba(255, 255, 255, 0.95);
+  font-size: 16px;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+/* Container */
+.container {
+  padding: 50px 24px;
+  max-width: 600px;
+  margin: auto;
+}
+
+/* Card */
+.card {
+  background: white;
+  padding: 40px 30px;
+  border-radius: 24px;
+  box-shadow: 0 10px 40px rgba(74, 155, 159, 0.1);
+  margin-bottom: 30px;
+}
+
+.card-title {
+  font-size: 24px;
+  color: var(--primary);
+  margin-bottom: 24px;
+  font-weight: 600;
+  text-align: center;
+}
+
+/* Input Group */
+.input-group {
+  margin-bottom: 24px;
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  font-size: 14px;
+  color: var(--text-dark);
+  margin-bottom: 8px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.label-icon {
+  font-size: 16px;
+}
+
+input, textarea {
+  padding: 16px;
+  font-size: 16px;
+  border-radius: 14px;
+  border: 2px solid #E8E8E8;
+  background: var(--sand);
+  transition: all 0.3s ease;
+  font-family: inherit;
+}
+
+input:focus, textarea:focus {
+  background: white;
+  border-color: var(--primary);
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(74, 155, 159, 0.1);
+}
+
+textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+input::placeholder, textarea::placeholder {
+  color: #999;
+}
+
+/* Date inputs side by side */
+.date-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+/* Button */
+button {
+  width: 100%;
+  padding: 18px;
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  font-size: 18px;
+  font-weight: 600;
+  margin-top: 10px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(74, 155, 159, 0.3);
+}
+
+button:hover {
+  background: var(--primary-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 25px rgba(74, 155, 159, 0.4);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Back Link */
+.back-home {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 30px;
+  color: var(--primary);
+  font-size: 16px;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 12px 24px;
+  border: 2px solid var(--primary);
+  border-radius: 50px;
+  transition: all 0.3s ease;
+  background: white;
+}
+
+.back-home:hover {
+  background: var(--primary);
+  color: white;
+}
+
+/* Toast */
+#toast {
+  visibility: hidden;
+  min-width: 280px;
+  background: var(--primary);
+  color: white;
+  text-align: center;
+  border-radius: 50px;
+  padding: 16px 24px;
+  position: fixed;
+  z-index: 999;
+  left: 50%;
+  bottom: 40px;
+  transform: translateX(-50%);
+  font-size: 15px;
+  opacity: 0;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 25px rgba(74, 155, 159, 0.4);
+}
+
+#toast.show {
+  visibility: visible;
+  opacity: 1;
+  bottom: 50px;
+}
+
+/* Info Box */
+.info-box {
+  background: var(--sand);
+  padding: 20px;
+  border-radius: 16px;
+  margin-bottom: 30px;
+  border-left: 4px solid var(--primary);
+}
+
+.info-box h3 {
+  color: var(--primary);
+  font-size: 16px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.info-box p {
+  color: var(--text-light);
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .header {
+    height: 280px;
+  }
+  
+  .logo-img {
+    width: 50px;
+  }
+  
+  .hero-logo {
+    width: 140px;
+  }
+  
+  .header-content h1 {
+    font-size: 28px;
+  }
+  
+  .container {
+    padding: 30px 20px;
+  }
+  
+  .card {
+    padding: 30px 24px;
+  }
+  
+  .date-row {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- Navigation -->
+<nav class="nav">
+  <div class="nav-content">
+    <a href="index.html" class="logo">
+      <img src="logo.png" alt="Gili Sal:EE Logo" class="logo-img">
+      <div>
+        <div class="logo-text">Gili Sal:EE</div>
+        <div class="logo-sub">LIFE IN GILI</div>
+      </div>
+    </a>
+    <div class="lang-toggle">
+      <button class="lang-btn active" data-lang="en">EN</button>
+      <button class="lang-btn" data-lang="ko">KO</button>
+    </div>
+  </div>
+</nav>
+
+<!-- Header -->
+<div class="header">
+  <div class="header-content">
+    <h1 data-en="Reservation Inquiry" data-ko="예약 문의">Reservation Inquiry</h1>
+    <p data-en="Book your stay at Gili Sal:EE" data-ko="길리살이에서의 특별한 휴식">Book your stay at Gili Sal:EE</p>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- Info Box -->
+  <div class="info-box">
+    <h3 data-en="📋 Booking Information" data-ko="📋 예약 안내">📋 Booking Information</h3>
+    <p data-en="Please submit your reservation inquiry and we will contact you as soon as possible. Early booking is recommended during peak season." data-ko="예약 문의를 남겨주시면 빠른 시일 내에 연락드리겠습니다. 성수기에는 조기 예약을 권장드립니다.">Please submit your reservation inquiry and we will contact you as soon as possible. Early booking is recommended during peak season.</p>
+  </div>
+
+  <!-- Booking Form Card -->
+  <div class="card">
+    <h2 class="card-title" data-en="Guest Information" data-ko="숙박 정보 입력">Guest Information</h2>
+    <form id="bookingForm">
+
+      <div class="input-group">
+        <label>
+          <span class="label-icon">👤</span>
+          <span data-en="Name" data-ko="이름">Name</span>
+        </label>
+        <input type="text" name="name" required data-placeholder-en="Please enter your name" data-placeholder-ko="성함을 입력해주세요" placeholder="Please enter your name" />
+      </div>
+
+      <div class="input-group">
+        <label>
+          <span class="label-icon">📞</span>
+          <span data-en="Phone" data-ko="연락처">Phone</span>
+        </label>
+        <input type="tel" name="phone" required data-placeholder-en="Contact number (e.g., +82-10-1234-5678)" data-placeholder-ko="연락받으실 번호 (예: 010-1234-5678)" placeholder="Contact number (e.g., +82-10-1234-5678)" />
+      </div>
+
+      <div class="input-group">
+        <label>
+          <span class="label-icon">✉️</span>
+          <span data-en="Email" data-ko="이메일">Email</span>
+        </label>
+        <input type="email" name="email" data-placeholder-en="example@email.com (optional)" data-placeholder-ko="example@email.com (선택)" placeholder="example@email.com (optional)" />
+      </div>
+
+      <div class="date-row">
+        <div class="input-group">
+          <label>
+            <span class="label-icon">📅</span>
+            <span data-en="Check-in" data-ko="체크인">Check-in</span>
+          </label>
+          <input type="date" name="checkin" required />
+        </div>
+
+        <div class="input-group">
+          <label>
+            <span class="label-icon">📅</span>
+            <span data-en="Check-out" data-ko="체크아웃">Check-out</span>
+          </label>
+          <input type="date" name="checkout" required />
+        </div>
+      </div>
+
+      <div class="input-group">
+        <label>
+          <span class="label-icon">👥</span>
+          <span data-en="Guests" data-ko="인원">Guests</span>
+        </label>
+        <input type="number" name="guests" required data-placeholder-en="Number of guests" data-placeholder-ko="몇 분이신가요?" placeholder="Number of guests" min="1" />
+      </div>
+
+      <div class="input-group">
+        <label>
+          <span class="label-icon">💬</span>
+          <span data-en="Special Requests (Optional)" data-ko="요청사항 (선택)">Special Requests (Optional)</span>
+        </label>
+        <textarea name="message" data-placeholder-en="Please feel free to write any special requests or requirements" data-placeholder-ko="특이사항이나 요청사항이 있으시면 자유롭게 작성해주세요" placeholder="Please feel free to write any special requests or requirements"></textarea>
+      </div>
+
+      <button type="submit" data-en="Submit Reservation" data-ko="예약 문의 보내기">Submit Reservation</button>
+    </form>
+  </div>
+
+  <a href="index.html" class="back-home">
+    <span data-en="← Back to Home" data-ko="← 메인으로 돌아가기">← Back to Home</span>
+  </a>
+
+</div>
+
+<div id="toast"></div>
+
+<script>
+// Google Apps Script Webhook URL (실제 사용 시 변경 필요)
+const scriptURL = "https://script.google.com/macros/s/AKfycbwH05LjFwgsVxw9oi9PJ99wgLTvlvzruY-DqxMQ2vNKgGcxHjSCXgk0F1hy9S1jAgrR/exec";
+
+// Set minimum date to today
+const today = new Date().toISOString().split('T')[0];
+document.querySelector('input[name="checkin"]').setAttribute('min', today);
+document.querySelector('input[name="checkout"]').setAttribute('min', today);
+
+// Update checkout min date when checkin changes
+document.querySelector('input[name="checkin"]').addEventListener('change', function(e) {
+  const checkinDate = e.target.value;
+  document.querySelector('input[name="checkout"]').setAttribute('min', checkinDate);
+});
+
+// Language Toggle
+let currentLang = 'en';
+
+function updatePlaceholders(lang) {
+  document.querySelectorAll('input[data-placeholder-en], textarea[data-placeholder-en]').forEach(el => {
+    el.placeholder = el.dataset[`placeholder${lang === 'en' ? 'En' : 'Ko'}`];
+  });
+}
+
+document.querySelectorAll('.lang-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const lang = btn.dataset.lang;
+    if (lang === currentLang) return;
+    
+    currentLang = lang;
+    
+    // Update button states
+    document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    
+    // Update content
+    document.querySelectorAll('[data-en][data-ko]').forEach(el => {
+      el.textContent = el.dataset[lang];
+    });
+    
+    // Update placeholders
+    updatePlaceholders(lang);
+    
+    // Save preference
+    localStorage.setItem('lang', lang);
+  });
+});
+
+// Load saved language preference
+const savedLang = localStorage.getItem('lang');
+if (savedLang && savedLang !== 'en') {
+  document.querySelector(`[data-lang="${savedLang}"]`).click();
+}
+
+function showToast(message, isSuccess = true) {
+  const toast = document.getElementById("toast");
+  toast.textContent = message;
+  toast.style.background = isSuccess ? '#4A9B9F' : '#e74c3c';
+  toast.classList.add("show");
+  setTimeout(() => toast.classList.remove("show"), 3000);
+}
+
+document.getElementById("bookingForm").addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const form = e.target;
+  const submitBtn = form.querySelector('button[type="submit"]');
+  
+  // Disable button during submission
+  submitBtn.disabled = true;
+  const originalText = submitBtn.textContent;
+  submitBtn.textContent = currentLang === 'en' ? 'Sending...' : '전송 중...';
+
+  const data = {
+    name: form.name.value,
+    phone: form.phone.value,
+    email: form.email.value || '-',
+    checkin: form.checkin.value,
+    checkout: form.checkout.value,
+    guests: form.guests.value,
+    message: form.message.value || '-',
+    timestamp: new Date().toLocaleString('ko-KR')
+  };
+
+  try {
+    const response = await fetch(scriptURL, {
+      method: "POST",
+      mode: 'no-cors',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data)
+    });
+
+    const successMsg = currentLang === 'en' ? '✓ Reservation inquiry submitted!' : '✓ 예약 문의가 접수되었습니다!';
+    showToast(successMsg, true);
+    form.reset();
+
+  } catch (err) {
+    console.error('Error:', err);
+    const errorMsg = currentLang === 'en' ? '✕ An error occurred. Please try again.' : '✕ 오류가 발생했습니다. 다시 시도해주세요.';
+    showToast(errorMsg, false);
+  } finally {
+    submitBtn.disabled = false;
+    submitBtn.textContent = originalText;
+  }
+});
+
+// Smooth scroll for back button
+document.querySelector('.back-home').addEventListener('click', function(e) {
+  if (this.getAttribute('href').startsWith('#')) {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+});
+</script>
+
+</body>
+</html>
